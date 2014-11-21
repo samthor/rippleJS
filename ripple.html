@@ -14,7 +14,6 @@
 
 .ripple-holder {
   position: absolute;
-  overflow: hidden;
   top: 0;
   left: 0;
   right: 0;
@@ -27,6 +26,7 @@
   padding-bottom: 100%;
   top: 50%;
   margin-top: -50%;
+  overflow: hidden;
   -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
 }
 
@@ -42,8 +42,8 @@
 }
 
 .ripple-holder .ripple.done {
-  margin-left: -50px;
-  margin-top: -50px;
+  margin-left: -100px;
+  margin-top: -100px;
   width: 200px;
   height: 200px;
   animation: ripple-opacity 0.66s;
@@ -84,18 +84,16 @@
 window.addEventListener('load', function() {
 
   document.addEventListener('click', function(ev) {
-    var target = ev.toElement;
-
-    if (!target.classList.contains('ripple-holder')) {
+    if (!ev.target.classList.contains('ripple-holder')) {
       return false;  // ignore
     }
 
-    var holder = target;
+    var holder = ev.target;
     var ripple = document.createElement('div');
     ripple.className = 'ripple';
 
-    ripple.style.left = event.offsetX + 'px';
-    ripple.style.top = event.offsetY + 'px';
+    ripple.style.left = ev.offsetX + 'px';
+    ripple.style.top = ev.offsetY + 'px';
 
     window.setTimeout(function() {
       ripple.classList.add('done');
