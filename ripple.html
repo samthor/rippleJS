@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+
+.ripple-holder {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.ripple-holder.fill {
+  border-radius: 100%;
+  width: 100%;
+  padding-bottom: 100%;
+  top: 50%;
+  margin-top: -50%;
+  -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+}
+
+.ripple-holder .ripple {
+  position: absolute;
+  border-radius: 100%;
+  background: rgb(33, 33, 33);
+  opacity: 0.0;
+  transition: all 0.5s ease-in;
+  width: 0;
+  height: 0;
+}
+
+.ripple-holder .ripple.done {
+  margin-left: -50px;
+  margin-top: -50px;
+  width: 200px;
+  height: 200px;
+  opacity: 0.4;
+}
+
+.ripple-holder.fill .ripple.done {
+  margin: auto;
+  width: 200%;
+  padding-bottom: 200%;
+  height: 0;
+  top: 0;
+  left: 0;
+}
+
+/** other stuff */
+
+.bar {
+  position: relative;
+  height: 48px;
+  width: 120px;
+  display: inline-block;
+  background: gray;
+}
+
+.bar.square {
+  height: 120px;
+}
+
+  </style>
+  <script>
+
+window.addEventListener('load', function() {
+
+  document.addEventListener('click', function(ev) {
+    var target = ev.toElement;
+
+    if (!target.classList.contains('ripple-holder')) {
+      return false;  // ignore
+    }
+
+    var holder = target;
+    var ripple = document.createElement('div');
+    ripple.className = 'ripple';
+
+    ripple.style.left = event.offsetX + 'px';
+    ripple.style.top = event.offsetY + 'px';
+
+    window.setTimeout(function() {
+      ripple.classList.add('done');
+    }, 25);  // nb. force anim, sometimes zero prevents anim
+
+    window.setTimeout(function() {
+      ripple.parentNode.removeChild(ripple);
+    }, 750);  // TODO: better number
+
+    holder.appendChild(ripple);
+
+  });
+
+});
+
+  </script>
+</head>
+<body>
+
+<div class="bar">
+  <div class="ripple-holder fill"></div>
+</div>
+
+<div class="bar square">
+  <div class="ripple-holder fill"></div>
+</div>
+
+<div class="bar">
+  <div class="ripple-holder"></div>
+</div>
+
+
+</body>
+</html>
