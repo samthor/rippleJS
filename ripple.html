@@ -3,6 +3,15 @@
 <head>
   <style type="text/css">
 
+@-webkit-keyframes ripple-opacity {
+  0%, 100% { opacity: 0.0; }
+  75%      { opacity: 0.4; }
+}
+@keyframes ripple-opacity {
+  0%, 100% { opacity: 0.0; }
+  75%      { opacity: 0.4; }
+}
+
 .ripple-holder {
   position: absolute;
   overflow: hidden;
@@ -29,6 +38,7 @@
   transition: all 0.5s ease-in;
   width: 0;
   height: 0;
+  pointer-events: none;
 }
 
 .ripple-holder .ripple.done {
@@ -36,7 +46,8 @@
   margin-top: -50px;
   width: 200px;
   height: 200px;
-  opacity: 0.4;
+  animation: ripple-opacity 0.66s;
+  -webkit-animation: ripple-opacity 0.66s;
 }
 
 .ripple-holder.fill .ripple.done {
@@ -44,8 +55,8 @@
   width: 200%;
   padding-bottom: 200%;
   height: 0;
-  top: 0;
-  left: 0;
+  top: -50% !important;
+  left: -50% !important;
 }
 
 /** other stuff */
