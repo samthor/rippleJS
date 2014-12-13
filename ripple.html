@@ -3,69 +3,6 @@
 <head>
   <style type="text/css">
 
-@-webkit-keyframes ripple-opacity {
-  0%, 100% { opacity: 0.0; }
-  75%      { opacity: 0.4; }
-}
-@keyframes ripple-opacity {
-  0%, 100% { opacity: 0.0; }
-  75%      { opacity: 0.4; }
-}
-
-/**
- * contains a ripple. Will normally grow to fixed size (200px/200px), not
- * related to the holder itself.
- */
-.ripple-holder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-}
-
-/**
- * .fill only allows the ripple to exist within an inner 'circle', useful for
- * e.g. form components or checkboxes. Fits to size relative to holder.
- */
-.ripple-holder.fill {
-  border-radius: 1000000px;  /** "large" number, but not 100% */
-  overflow: hidden;
-
-  /** Forces webkit to properly contain content within border-radius. */
-  -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
-}
-
-.ripple-holder .ripple {
-  position: absolute;
-  border-radius: 100%;
-  background: rgb(33, 33, 33);
-  opacity: 0.0;
-  transition: all 0.5s ease-in;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-
-.ripple-holder .ripple.done {
-  margin-left: -100px;
-  margin-top: -100px;
-  width: 200px;
-  height: 200px;
-  animation: ripple-opacity 0.66s;
-  -webkit-animation: ripple-opacity 0.66s;
-}
-
-.ripple-holder.fill .ripple.done {
-  margin: auto;
-  width: 200%;  /** nb: assumes width > height. */
-  padding-bottom: 200%;  /** forces matching size */
-  height: 0;
-  margin-left: -100%;
-  margin-top: -100%;
-}
-
 /** other stuff */
 
 .bar {
@@ -86,64 +23,30 @@
 }
 
   </style>
-  <script>
-
-window.addEventListener('load', function() {
-
-  document.addEventListener('click', function(ev) {
-    if (!ev.target.classList.contains('ripple-holder')) {
-      return false;  // ignore
-    }
-
-    var holder = ev.target;
-    var ripple = document.createElement('div');
-    ripple.className = 'ripple';
-
-    ripple.style.left = ev.offsetX + 'px';
-    ripple.style.top = ev.offsetY + 'px';
-    console.info(ev.offsetX, ev.offsetY);
-
-    window.requestAnimationFrame(function() {
-      ripple.classList.add('done');
-    });
-
-    // window.setTimeout(function() {
-    // }, 20);  // nb. force anim, sometimes zero prevents anim
-
-    window.setTimeout(function() {
-      ripple.parentNode.removeChild(ripple);
-    }, 750);  // TODO: better number
-
-    holder.appendChild(ripple);
-
-  });
-
-});
-
-  </script>
 </head>
 <body>
 
 <div class="bar">
-  <div class="ripple-holder fill"></div>
+  <div class="rippleJS fill"></div>
 </div>
 
 <div class="bar tall">
-  <div class="ripple-holder fill"></div>
+  <div class="rippleJS fill"></div>
 </div>
 
 <div class="bar square">
-  <div class="ripple-holder fill"></div>
+  <div class="rippleJS fill"></div>
 </div>
 
 <div class="bar">
-  <div class="ripple-holder"></div>
+  <div class="rippleJS"></div>
 </div>
 
 <button style="border: 0; width: 100px; height: 32px; position: relative;">
-  <div class="ripple-holder"></div>
+  <div class="rippleJS"></div>
   Hello
 </button>
 
+<script src="ripple.js"></script>
 </body>
 </html>

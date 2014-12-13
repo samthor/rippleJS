@@ -1,0 +1,81 @@
+/** NOTE: When this is updated, refresh ripple.js' minified version. */
+
+@-webkit-keyframes rippleJS-opacity {
+  0%, 100% { opacity: 0.0; }
+  75%      { opacity: 0.4; }
+}
+@keyframes rippleJS-opacity {
+  0%, 100% { opacity: 0.0; }
+  75%      { opacity: 0.4; }
+}
+
+/**
+ * contains a ripple. Will normally grow to fixed size (200px/200px), not
+ * related to the holder itself.
+ */
+.rippleJS {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+/**
+ * .fill only allows the ripple to exist within an inner 'circle', useful for
+ * e.g. form components or checkboxes. Fits to size relative to holder.
+ */
+.rippleJS.fill {
+}
+.rippleJS.fill::after {  /** allows webkit/blink to tap on corners */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+}
+.rippleJS.fill.active {
+  border-radius: 1000000px;  /** "large" number, but not 100% */
+  overflow: hidden;
+
+  /** Forces webkit to properly contain content within border-radius. */
+  -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+}
+
+.rippleJS .ripple {
+  position: absolute;
+  border-radius: 100%;
+  background: rgb(33, 33, 33);
+  opacity: 0.0;
+  transition: all 0.4s ease-in;
+  width: 0;
+  height: 0;
+
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.rippleJS .ripple.done {
+  margin-left: -100px;
+  margin-top: -100px;
+  width: 200px;
+  height: 200px;
+  animation: rippleJS-opacity 1s;
+  -webkit-animation: rippleJS-opacity 1s;
+}
+
+.rippleJS.fill .ripple.done {
+  margin: auto;
+  width: 200%;  /** nb: assumes width > height. */
+  padding-bottom: 200%;  /** forces matching size */
+  height: 0;
+  margin-left: -100%;
+  margin-top: -100%;
+}
