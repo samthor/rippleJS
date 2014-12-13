@@ -14,6 +14,7 @@
  * related to the holder itself.
  */
 .rippleJS {
+  display: block;
   position: absolute;
   top: 0;
   left: 0;

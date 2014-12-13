@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style type="text/css">
+<link href="ripple.css" media="all" rel="stylesheet" type="text/css" />
+<style type="text/css">
 
 /** other stuff */
 
@@ -20,6 +21,17 @@
 .bar.tall {
   height: 120px;
   width: 48px;
+}
+
+.yourButton {
+  border: 0;
+  outline: 0;
+  width: 100px;
+  height: 32px;
+  float: right;
+  background: white;
+  font: "Roboto";
+  position: relative;
 }
 
   </style>
@@ -45,6 +57,11 @@
 <button style="border: 0; width: 100px; height: 32px; position: relative;">
   <div class="rippleJS"></div>
   Hello
+</button>
+
+<button class="yourButton">
+  <link class="rippleJS" />
+  Click Me
 </button>
 
 <script src="ripple.js"></script>
