@@ -1,0 +1,120 @@
+* {
+  font-family: "Roboto", Helvetica, Sans-Serif;
+}
+
+article {
+  margin: auto;
+  padding-top: 8px;
+  border-top: 1px solid #ccc;
+  max-width: 600px;
+}
+
+.yourButton {
+  border: 0;
+  outline: 0;
+  width: 120px;
+  height: 48px;
+  position: relative;
+  background: #1a8cf3;
+  color: white;
+  border-radius: 12px;
+  font-weight: 400;
+  font-size: 20px;
+  vertical-align: bottom;
+  transition: box-shadow 0.25s;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  border: 2px solid transparent;
+  transition: border 0.15s;
+  margin-bottom: 8px;
+}
+.yourButton .rippleJS {
+  border-radius: 10px;  /** parent border-radius minus border width */
+}
+.yourButton .rippleJS .ripple {
+  background: white;
+}
+.yourButton:focus {
+  outline: none;
+  border: 2px solid rgba(33, 33, 33, 0.5);
+}
+.yourButton.alt {
+  background: #ff941a;
+}
+
+.items {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  background: white;
+  display: inline-block;
+  width: 240px;
+  text-align: left;
+}
+
+.item {
+  padding: 8px;
+  position: relative;
+}
+
+.fillable {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  position: relative;
+  line-height: 200px;
+  margin: 8px;
+  text-align: center;
+}
+.fillable .rippleJS .ripple {
+  background: red;
+}
+
+.optHolder {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.optHolder input[type="checkbox"] {
+  visibility: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.optHolder input[type="checkbox"]::before {
+  content: "\2714";
+  text-shadow: 1px 1px 0 white, 0px -1px 0 white;
+  text-align: center;
+  display: block;
+  width: 32px;
+  line-height: 32px;
+  font-size: 24px;
+  visibility: visible;
+  color: #1a8cf3;
+  transition: all 0.25s;
+  opacity: 0.0;
+  transform: rotate(120deg);
+}
+.optHolder input[type="checkbox"]:checked::before {
+  opacity: 1.0;
+  transform: rotate(0deg);
+}
+.optHolder input[type="checkbox"]::after {
+  content: "";
+  border: 1px solid #1a8cf3;
+  border-radius: 3px;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -8px;
+  margin-left: -8px;
+  display: inline-block;
+  visibility: visible;
+  z-index: -10;
+}

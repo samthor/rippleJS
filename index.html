@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>rippleJS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="index.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,300,400" rel="stylesheet" type="text/css" />
+</head>
+<body style="text-align: center">
+
+  <h1>rippleJS demos</h1>
+  <p>
+    <a href="https://github.com/samthor/rippleJS">rippleJS on GitHub</a>
+  </p>
+
+  <article>
+    <button class="yourButton">
+      Click Me
+      <link class="rippleJS" />
+    </button>
+    <button class="yourButton alt">
+      Or Me
+      <link class="rippleJS" />
+    </button>
+    <button class="yourButton">
+      No Ripple
+    </button>
+  </article>
+
+  <article>
+    <div class="items">
+      <div class="item">
+        Item
+        <div class="rippleJS"></div>
+      </div>
+      <div class="item">
+        Really long item that has lots of text
+        <div class="rippleJS"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="fillable">
+        Orphan fillable
+        <div class="rippleJS fill"></div>
+      </div>
+    </div>
+  </article>
+
+  <article>
+    <label class="optHolder">
+      <input type="checkbox" checked="checked" />
+      <link class="rippleJS fill" />
+    </label>
+    <label class="optHolder">
+      <input type="checkbox" checked="checked" />
+      <link class="rippleJS fill" />
+    </label>
+  </article>
+
+<script src="https://cdn.rawgit.com/samthor/rippleJS/master/ripple.min.js"></script>
+</body>
+</html>
