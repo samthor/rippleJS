@@ -12,14 +12,13 @@
   right: 0;
   bottom: 0;
   overflow: hidden;
+  border-radius: inherit;
+
+  /** Forces webkit to properly contain content within border-radius. */
+  -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
 }
 
-/**
- * .fill only allows the ripple to exist within an inner 'circle', useful for
- * e.g. form components or checkboxes. Fits to size relative to holder.
- */
-.rippleJS.fill {
-}
+/** adds default border-radius */
 .rippleJS.fill::after {  /** allows webkit/blink to tap on corners */
   position: absolute;
   top: 0;
@@ -30,18 +29,14 @@
 }
 .rippleJS.fill.active {
   border-radius: 1000000px;  /** "large" number, but not 100% */
-  overflow: hidden;
-
-  /** Forces webkit to properly contain content within border-radius. */
-  -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
 }
 
 .rippleJS .ripple {
   position: absolute;
   border-radius: 100%;
-  background: rgb(33, 33, 33);
-  opacity: 0.4;
-  transition: all 0.4s ease-in;
+  background: rgb(60, 60, 60);
+  opacity: 0.2;
+  transition: all 0.4s ease-out;
   width: 0;
   height: 0;
 
@@ -53,23 +48,10 @@
   -ms-user-select: none;
   user-select: none;
 }
-
 .rippleJS .ripple.held {
-  margin-left: -200px;
-  margin-top: -200px;
-  width: 400px;
-  height: 400px;
+  opacity: 0.4;
 }
+
 .rippleJS .ripple.done {
   opacity: 0.0;
-  transition: all 0.6s ease-out;
-}
-
-.rippleJS.fill .ripple.held {
-  margin: auto;
-  width: 200%;  /** nb: assumes width > height. */
-  padding-bottom: 200%;  /** forces matching size */
-  height: 0;
-  margin-left: -100%;
-  margin-top: -100%;
 }

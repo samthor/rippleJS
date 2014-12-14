@@ -19,9 +19,8 @@ window.addEventListener('load', function() {
     document.body.removeChild(test);
     return result;
   }
-
   if (!hasCSS()) {
-    var css = '/*rippleJS*/.rippleJS{display:block;position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden}.rippleJS.fill::after{position:absolute;top:0;left:0;right:0;bottom:0;content:""}.rippleJS.fill.active{border-radius:1000000px;overflow:hidden;-webkit-mask-image:-webkit-radial-gradient(circle,#fff,#000)}.rippleJS .ripple{position:absolute;border-radius:100%;background:#212121;opacity:0;transition:all .5s ease-in,opacity .1s;width:0;height:0;pointer-events:none;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.rippleJS .ripple.held{margin-left:-200px;margin-top:-200px;width:400px;height:400px;opacity:.4}.rippleJS .ripple.done{opacity:0!important;transition:all .5s ease-out}.rippleJS.fill .ripple.held{margin:-100% auto auto -100%;width:200%;padding-bottom:200%;height:0}';
+    var css = '/*rippleJS*/.rippleJS{display:block;position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;border-radius:inherit;-webkit-mask-image:-webkit-radial-gradient(circle,#fff,#000)}.rippleJS.fill::after{position:absolute;top:0;left:0;right:0;bottom:0;content:""}.rippleJS.fill.active{border-radius:1000000px}.rippleJS .ripple{position:absolute;border-radius:100%;background:#3c3c3c;opacity:.2;transition:all .4s ease-out;width:0;height:0;pointer-events:none;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.rippleJS .ripple.held{opacity:.4}.rippleJS .ripple.done{opacity:0}';
     applyStyle(css);
   }
 
@@ -42,12 +41,12 @@ window.addEventListener('load', function() {
     holder.setAttribute('data-event', type);
 
     // Create and position the ripple.
+    var rect = holder.getBoundingClientRect();
     var x = at.offsetX;
     var y;
     if (x !== undefined) {
       y = at.offsetY;
     } else {
-      var rect = holder.getBoundingClientRect();
       x = at.clientX - rect.left;
       y = at.clientY - rect.top;
     }
@@ -60,6 +59,19 @@ window.addEventListener('load', function() {
     cl.add('active');
     holder.appendChild(ripple);
     window.setTimeout(function() {
+      var max;
+      if (rect.width == rect.height) {
+        max = rect.width * 1.412;
+      } else {
+        max = Math.sqrt(rect.width * rect.width + rect.height * rect.height);
+      }
+
+      var dim = max*2 + 'px';
+      var margin = -max + 'px';
+      ripple.style.width = dim;
+      ripple.style.height = dim;
+      ripple.style.marginLeft = margin;
+      ripple.style.marginTop = margin;
       ripple.classList.add('held');
     }, 20);
 
