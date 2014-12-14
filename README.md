@@ -7,23 +7,17 @@ Adds Material Design-style feedback ripples to your existing HTML.
 Include the [rippleJS script](https://cdn.rawgit.com/samthor/rippleJS/master/ripple.min.js) at the end of your page. Then, add element with the `rippleJS` class within a parent element that has layout (aka, `position: relative` or `position: absolute`).
 
     <button class="yourButton">
-      <link class="rippleJS" />
       Click Me
+      <link class="rippleJS" />
     </button>
 
     <script src="https://cdn.rawgit.com/samthor/rippleJS/master/ripple.min.js"></script>
 
-rippleJS adds a click handler on `document.body`, so you don't need to 'register' any new elements as you add them to the DOM. It also inserts its own CSS.
+rippleJS adds a click handler on `document.body`, so you don't need to register any new elements as you add them to the DOM. It also inserts its own CSS.
 
 ### Ripple Fill
 
-By default, tapping or clicking on a `rippleJS` element will create a fixed-size ripple (on the right below). However, by adding the `fill` class, the ripple will fill to rounded corner edges (on the left): good for form elements with fixed size.
-
-  <video width="246" height="122" controls style="margin: auto">
-    <source src="rippleJS.mov" type="video/mp4" />
-  </video>
-
-For example:
+By adding the `fill` class to a `rippleJS` element, the rippler will fill to rounded corners: good for form elements with fixed size. For example:
 
     <div class="optHolder">
       <link class="rippleJS fill" />
@@ -32,10 +26,16 @@ For example:
 
 ### Ripple Color
 
-To change the default color of a ripple, add the following style rules:
+To change the default color of a ripple, add the following style rule:
 
     .rippleJS .ripple {
       background: red;
+    }
+
+You could also change it just for some elements:
+
+    .yourClassName .rippleJS .ripple {
+      background: blue;
     }
 
 ## Supports
