@@ -1,6 +1,6 @@
 # rippleJS
 
-Adds Material Design-style feedback ripples to your existing HTML.
+Adds Material Design-style feedback ripples to your existing HTML. [Show me the demos!](http://samthor.github.io/rippleJS)
 
 ## Usage
 
