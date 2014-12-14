@@ -1,7 +1,5 @@
 
 window.addEventListener('load', function() {
-  var raf = window.requestAnimationFrame || window.setTimeout;
-
   function applyStyle(css) {
     var style = document.createElement('style');
     style.type = 'text/css';
@@ -27,37 +25,43 @@ window.addEventListener('load', function() {
     applyStyle(css);
   }
 
-  document.addEventListener('click', function(ev) {
+  function eventToOffset(ev) {
+    var holder = ev.target;
+    var x, y;
+
+    if (ev.offsetX !== undefined) {
+      return {x: ev.offsetX, y: ev.offsetY};
+    }
+    var rect = holder.getBoundingClientRect();
+    return {x: ev.clientX - rect.left, y: ev.clientY - rect.top}; 
+  }
+
+  document.addEventListener('mousedown', function(ev) {
     var holder = ev.target;
     if (!holder.classList.contains('rippleJS')) {
       return false;  // ignore
     }
     holder.classList.add('active');
 
-    var x = ev.offsetX;
-    var y;
-    if (x !== undefined) {
-      y = ev.offsetY;
-    } else {
-      // firefox doesn't have offsetX/offsetY
-      var rect = holder.getBoundingClientRect();
-      x = ev.clientX - rect.left;
-      y = ev.clientY - rect.top;
-      raf = window.setTimeout;  // firefox needs the delay for css calc
-    }
-
+    var offset = eventToOffset(ev);
     var ripple = document.createElement('div');
     ripple.className = 'ripple';
-    ripple.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+    ripple.style.transform = 'translate(' + offset.x + 'px, ' + offset.y + 'px)';
     ripple.style.webkitTransform = ripple.style.transform;
 
-    raf(function() {
-      ripple.classList.add('done');
+    window.setTimeout(function() {
+      ripple.classList.add('held');
 
-      window.setTimeout(function() {
-        holder.removeChild(ripple);
-        holder.children.length || holder.classList.remove('active');
-      }, 1250);  // larger than animation: duration in css
+      var release = function() {
+        document.removeEventListener('mouseup', release);
+        ripple.classList.add('done');
+
+        window.setTimeout(function() {
+          holder.removeChild(ripple);
+          holder.children.length || holder.classList.remove('active');
+        }, 500);  // larger than animation: duration in css
+      };
+      document.addEventListener('mouseup', release);
 
     }, 20);  // needs to be delayed, setTimeout with zero prevents anim
 

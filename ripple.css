@@ -1,14 +1,5 @@
 /** NOTE: When this is updated, refresh ripple.js' minified version. */
 
-@-webkit-keyframes rippleJS-opacity {
-  0%, 100% { opacity: 0.0; }
-  75%      { opacity: 0.4; }
-}
-@keyframes rippleJS-opacity {
-  0%, 100% { opacity: 0.0; }
-  75%      { opacity: 0.4; }
-}
-
 /**
  * contains a ripple. Will normally grow to fixed size (200px/200px), not
  * related to the holder itself.
@@ -50,7 +41,7 @@
   border-radius: 100%;
   background: rgb(33, 33, 33);
   opacity: 0.0;
-  transition: all 0.4s ease-in;
+  transition: all 0.5s ease-in, opacity 0.1s;
   width: 0;
   height: 0;
 
@@ -63,16 +54,19 @@
   user-select: none;
 }
 
+.rippleJS .ripple.held {
+  margin-left: -200px;
+  margin-top: -200px;
+  width: 400px;
+  height: 400px;
+  opacity: 0.4;
+}
 .rippleJS .ripple.done {
-  margin-left: -100px;
-  margin-top: -100px;
-  width: 200px;
-  height: 200px;
-  animation: rippleJS-opacity 1s;
-  -webkit-animation: rippleJS-opacity 1s;
+  opacity: 0.0 !important;
+  transition: all 0.5s ease-out;
 }
 
-.rippleJS.fill .ripple.done {
+.rippleJS.fill .ripple.held {
   margin: auto;
   width: 200%;  /** nb: assumes width > height. */
   padding-bottom: 200%;  /** forces matching size */
