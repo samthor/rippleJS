@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="ripple.css" media="all" rel="stylesheet" type="text/css" />
 <style type="text/css">
 
 /** other stuff */
+
+* {
+  font-family: "Roboto";
+}
 
 .bar {
   position: relative;
@@ -28,10 +31,74 @@
   outline: 0;
   width: 100px;
   height: 32px;
-  float: right;
-  background: white;
-  font: "Roboto";
   position: relative;
+  background: #1a8cf3;
+  color: white;
+  border-radius: 2px;
+  font-weight: 400;
+  font-size: 16px;
+  vertical-align: bottom;
+  transition: box-shadow 0.25s;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+}
+.yourButton .rippleJS {
+  border-radius: 2px;
+  -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+}
+.yourButton:focus {
+  outline: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.optHolder {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.optHolder input[type="checkbox"] {
+  visibility: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.optHolder input[type="checkbox"]::before {
+  content: "\2714";
+  text-shadow: 1px 1px 0 white, 0px -1px 0 white;
+  text-align: center;
+  display: block;
+  width: 32px;
+  line-height: 32px;
+  font-size: 24px;
+  visibility: visible;
+  color: #1a8cf3;
+  transition: all 0.25s;
+  opacity: 0.0;
+  transform: rotate(120deg);
+}
+.optHolder input[type="checkbox"]:checked::before {
+  opacity: 1.0;
+  transform: rotate(0deg);
+}
+.optHolder input[type="checkbox"]::after {
+  content: "";
+  border: 1px solid #1a8cf3;
+  border-radius: 3px;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -8px;
+  margin-left: -8px;
+  display: inline-block;
+  visibility: visible;
+  z-index: -10;
 }
 
   </style>
@@ -54,15 +121,15 @@
   <div class="rippleJS"></div>
 </div>
 
-<button style="border: 0; width: 100px; height: 32px; position: relative;">
-  <div class="rippleJS"></div>
-  Hello
+<button class="yourButton">
+  Click Me
+  <link class="rippleJS" />
 </button>
 
-<button class="yourButton">
-  <link class="rippleJS" />
-  Click Me
-</button>
+<label class="optHolder">
+  <input type="checkbox" checked="checked" />
+  <link class="rippleJS fill" />
+</label>
 
 <script src="ripple.js"></script>
 </body>
