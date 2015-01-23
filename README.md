@@ -12,7 +12,7 @@ Include the [rippleJS script](https://cdn.rawgit.com/samthor/rippleJS/v1.0.0/rip
   <link class="rippleJS" />
 </button>
 
-<script src="https://cdn.rawgit.com/samthor/rippleJS/master/ripple.min.js"></script>
+<script src="https://cdn.rawgit.com/samthor/rippleJS/v1.0.0/ripple.min.js"></script>
 ```
 
 rippleJS adds handlers on `document.body`, so you don't need to register any new elements as you add them to the DOM. It supports touch and mouse events, and includes its own CSS.
