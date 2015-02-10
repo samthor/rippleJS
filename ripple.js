@@ -94,7 +94,12 @@ window.addEventListener('load', function() {
     document.addEventListener(releaseEvent, release);
   }
 
-  document.addEventListener('mousedown', startRipple.bind(null, 'mousedown'));
+  document.addEventListener('mousedown', function(ev) {
+    if (ev.button == 0) {
+      // trigger on left click only
+      startRipple(ev.type, ev);
+    }
+  });
   document.addEventListener('touchstart', function(ev) {
     for (var i = 0; i < ev.changedTouches.length; ++i) {
       startRipple(ev.type, ev.changedTouches[i]);
