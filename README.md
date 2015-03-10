@@ -30,7 +30,8 @@ By adding the `fill` class to a `rippleJS` element, the rippler will fill to rou
 
 ### Ripple Color
 
-To change the default color of a ripple, add the following style rule:
+The default color is a transparent version of the current color (aka, the `currentColor` [keyword](http://www.w3.org/TR/css3-color/#currentcolor)).
+To change this default, add the following style rule:
 
 ```css
 .rippleJS .ripple {
@@ -45,6 +46,14 @@ You could also change it just for some elements:
   background: blue;
 }
 ```
+
+Or change the level of opacity:
+
+```css
+.moreOpaque .rippleJS .ripple {
+  opacity: 0.65;
+}
+````
 
 ## Supports
 
