@@ -15,11 +15,11 @@ Include the [rippleJS script](https://cdn.rawgit.com/samthor/rippleJS/v1.0.0/rip
 <script src="https://cdn.rawgit.com/samthor/rippleJS/v1.0.0/ripple.min.js"></script>
 ```
 
-rippleJS adds handlers on `document.body`, so you don't need to register any new elements as you add them to the DOM. It supports touch and mouse events, and includes its own CSS.
+rippleJS adds handlers on `document.body`, so you don't need to register any new elements as you add them to the DOM. It supports touch and mouse events (even at the same time), and includes its own CSS.
 
 ### Ripple Fill
 
-By adding the `fill` class to a `rippleJS` element, the rippler will fill to rounded corners, good for form elements with fixed size. For example:
+By adding the `fill` class to a `rippleJS` element, the ripple will fill to rounded corners, good for form elements with fixed size. For example:
 
 ```html
 <div class="optHolder">
