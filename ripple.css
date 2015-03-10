@@ -34,7 +34,7 @@
 .rippleJS .ripple {
   position: absolute;
   border-radius: 100%;
-  background: rgb(60, 60, 60);
+  background: currentColor;
   opacity: 0.2;
   transition: all 0.4s ease-out;
   width: 0;
