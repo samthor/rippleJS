@@ -74,6 +74,7 @@ article {
   height: 32px;
   display: inline-block;
   vertical-align: bottom;
+  color: #1a8cf3;
 }
 
 .optHolder input[type="checkbox"] {
@@ -84,6 +85,7 @@ article {
   margin: 0;
   padding: 0;
   border: 0;
+  color: inherit;
 }
 .optHolder input[type="checkbox"]::before {
   content: "\2714";
@@ -94,7 +96,6 @@ article {
   line-height: 32px;
   font-size: 24px;
   visibility: visible;
-  color: #1a8cf3;
   transition: all 0.25s;
   opacity: 0.0;
   transform: rotate(120deg);
@@ -105,7 +106,7 @@ article {
 }
 .optHolder input[type="checkbox"]::after {
   content: "";
-  border: 1px solid #1a8cf3;
+  border: 1px solid currentColor;
   border-radius: 3px;
   width: 14px;
   height: 14px;
