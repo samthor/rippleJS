@@ -4,7 +4,7 @@ Adds Material Design-style feedback ripples to your existing HTML without any de
 
 ## Usage
 
-Include the [rippleJS script](https://cdn.rawgit.com/samthor/rippleJS/v1.0.1/ripple.min.js) at the end of your page. Then, add element with the `rippleJS` class within a parent element that has layout (aka, `position: relative` or `position: absolute`).
+Include the [rippleJS script](https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/ripple.min.js) at the end of your page. Then, add element with the `rippleJS` class within a parent element that has layout (aka, `position: relative` or `position: absolute`).
 
 ```html
 <button class="yourButton">
@@ -12,7 +12,7 @@ Include the [rippleJS script](https://cdn.rawgit.com/samthor/rippleJS/v1.0.1/rip
   <link class="rippleJS" />
 </button>
 
-<script src="https://cdn.rawgit.com/samthor/rippleJS/v1.0.1/ripple.min.js"></script>
+<script src="https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/ripple.min.js"></script>
 ```
 
 rippleJS adds handlers on `document.body`, so you don't need to register any new elements as you add them to the DOM. It supports touch and mouse events (even at the same time), and includes its own CSS.
