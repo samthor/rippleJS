@@ -27,7 +27,7 @@
   bottom: 0;
   content: "";
 }
-.rippleJS.fill.active {
+.rippleJS.fill {
   border-radius: 1000000px;  /** "large" number, but not 100% */
 }
 
@@ -36,9 +36,16 @@
   border-radius: 100%;
   background: currentColor;
   opacity: 0.2;
-  transition: all 0.4s ease-out;
   width: 0;
   height: 0;
+
+  /** only animate transform and opacity */
+  -webkit-transition: -webkit-transform 0.4s ease-out, opacity 0.4s ease-out;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+
+  /** initially hidden */
+  -webkit-transform: scale(0);
+  transform: scale(0);
 
   pointer-events: none;
   -webkit-touch-callout: none;
@@ -48,8 +55,11 @@
   -ms-user-select: none;
   user-select: none;
 }
+
 .rippleJS .ripple.held {
   opacity: 0.4;
+  -webkit-transform: scale(1);
+  transform: scale(1);
 }
 
 .rippleJS .ripple.done {

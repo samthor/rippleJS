@@ -20,7 +20,7 @@ window.addEventListener('load', function() {
     return result;
   }
   if (!hasCSS()) {
-    var css = '/*rippleJS*/.rippleJS{display:block;position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;border-radius:inherit;-webkit-mask-image:-webkit-radial-gradient(circle,#fff,#000)}.rippleJS.fill::after{position:absolute;top:0;left:0;right:0;bottom:0;content:""}.rippleJS.fill.active{border-radius:1000000px}.rippleJS .ripple{position:absolute;border-radius:100%;background:currentColor;opacity:.2;transition:all .4s ease-out;width:0;height:0;pointer-events:none;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.rippleJS .ripple.held{opacity:.4}.rippleJS .ripple.done{opacity:0}';
+    var css = '/*rippleJS*/.rippleJS,.rippleJS.fill::after{position:absolute;top:0;left:0;right:0;bottom:0}.rippleJS{display:block;overflow:hidden;border-radius:inherit;-webkit-mask-image:-webkit-radial-gradient(circle,#fff,#000)}.rippleJS.fill::after{content:""}.rippleJS.fill{border-radius:1000000px}.rippleJS .ripple{position:absolute;border-radius:100%;background:currentColor;opacity:.2;width:0;height:0;-webkit-transition:-webkit-transform .4s ease-out,opacity .4s ease-out;transition:transform .4s ease-out,opacity .4s ease-out;-webkit-transform:scale(0);transform:scale(0);pointer-events:none;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.rippleJS .ripple.held{opacity:.4;-webkit-transform:scale(1);transform:scale(1)}.rippleJS .ripple.done{opacity:0}';
     applyStyle(css);
   }
 
@@ -51,29 +51,24 @@ window.addEventListener('load', function() {
       y = at.clientY - rect.top;
     }
     var ripple = document.createElement('div');
-    ripple.className = 'ripple';
-    ripple.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
-    ripple.style.webkitTransform = ripple.style.transform;
+    var max;
+    if (rect.width == rect.height) {
+      max = rect.width * 1.412;
+    } else {
+      max = Math.sqrt(rect.width * rect.width + rect.height * rect.height);
+    }
+    var dim = max*2 + 'px';
+    ripple.style.width = dim;
+    ripple.style.height = dim;
+    ripple.style.marginLeft = -max + x + 'px';
+    ripple.style.marginTop = -max + y + 'px';
 
-    // Activate/add the element, forcing an animation (setTimeout).
-    cl.add('active');
+    // Activate/add the element.
+    ripple.className = 'ripple';
     holder.appendChild(ripple);
     window.setTimeout(function() {
-      var max;
-      if (rect.width == rect.height) {
-        max = rect.width * 1.412;
-      } else {
-        max = Math.sqrt(rect.width * rect.width + rect.height * rect.height);
-      }
-
-      var dim = max*2 + 'px';
-      var margin = -max + 'px';
-      ripple.style.width = dim;
-      ripple.style.height = dim;
-      ripple.style.marginLeft = margin;
-      ripple.style.marginTop = margin;
       ripple.classList.add('held');
-    }, 20);
+    }, 0);
 
     var releaseEvent = (type == 'mousedown' ? 'mouseup' : 'touchend');
     var release = function(ev) {
