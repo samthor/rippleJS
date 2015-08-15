@@ -11,7 +11,9 @@
   ],
   "keywords": [
     "javascript",
-    "material-design"
+    "material-design",
+    "ripple",
+    "ripplejs"
   ],
   "license": "MIT"
 }
