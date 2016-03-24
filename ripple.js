@@ -8,7 +8,7 @@ window.addEventListener('load', function() {
     } else {
       style.appendChild(document.createTextNode(css));
     }
-    document.body.appendChild(style);
+    document.head.insertBefore(style, document.head.firstChild);
   }
   function hasCSS() {
     var test = document.createElement('div');
