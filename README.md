@@ -4,7 +4,7 @@ Adds Material Design-style feedback ripples to your existing HTML without any de
 
 ## Usage
 
-Include the [rippleJS script](https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/ripple.min.js) at the end of your page. Then, add element with the `rippleJS` class within a parent element that has layout (aka, `position: relative` or `position: absolute`).
+Include the [rippleJS script](https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/ripple.min.js) at the end of your page (or use [Bower/NPM](#install)). Then, add element with the `rippleJS` class within a parent element that has layout (aka, `position: relative` or `position: absolute`).
 
 ```html
 <button class="yourButton">
@@ -60,8 +60,10 @@ Or change the level of opacity:
 Chrome, Safari, Firefox (all as of Dec 2014).
 Requires `classList`, so probably [only supports IE10+](http://caniuse.com/#feat=classlist).
 
-## Bower
+## Install 
 
-Instead of using rippleJS directly, you can fetch it using Bower:
+Instead of using rippleJS directly, you can fetch it using Bower or NPM:
 
     $ bower install vanilla-ripplejs
+    $ npm install vanilla-ripplejs
+

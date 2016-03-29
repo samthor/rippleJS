@@ -1,0 +1,22 @@
+{
+  "name": "vanilla-ripplejs",
+  "version": "1.0.3",
+  "description": "vanilla Material Design ripples",
+  "main": "ripple.min.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samthor/rippleJS.git"
+  },
+  "keywords": [
+    "javascript",
+    "material-design",
+    "ripple",
+    "ripplejs"
+  ],
+  "author": "Sam Thorogood <sam.thorogood@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samthor/rippleJS/issues"
+  },
+  "homepage": "https://github.com/samthor/rippleJS#readme"
+}
