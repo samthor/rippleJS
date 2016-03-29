@@ -58,6 +58,7 @@ Or change the level of opacity:
 ## Supports
 
 Chrome, Safari, Firefox (all as of Dec 2014).
+Requires `classList`, so probably [only supports IE10+](http://caniuse.com/#feat=classlist).
 
 ## Bower
 
