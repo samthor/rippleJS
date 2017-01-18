@@ -9,7 +9,7 @@ Include the [rippleJS script](https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/rip
 ```html
 <button class="yourButton">
   Click Me
-  <link class="rippleJS" />
+  <div class="rippleJS"></div>
 </button>
 
 <script src="https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/ripple.min.js"></script>
@@ -24,7 +24,7 @@ By adding the `fill` class to a `rippleJS` element, the ripple will fill to roun
 ```html
 <div class="optHolder">
   <input type="checkbox" />
-  <link class="rippleJS fill" />
+  <div class="rippleJS fill"></div>
 </div>
 ```
 
