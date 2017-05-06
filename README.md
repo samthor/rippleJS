@@ -1,10 +1,12 @@
 # rippleJS
 
-Adds Material Design-style feedback ripples to your existing HTML without any dependencies. [Show me the demos!](http://samthor.github.io/rippleJS)
+Adds Material Design-style feedback ripples to your existing HTML without any dependencies.
+[Show me the demos!](http://samthor.github.io/rippleJS)
 
 ## Usage
 
-Include the [rippleJS script](https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/ripple.min.js) at the end of your page (or use [Bower/NPM](#install)). Then, add element with the `rippleJS` class within a parent element that has layout (aka, `position: relative` or `position: absolute`).
+Include the [rippleJS script](https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/ripple.min.js) (or use a [local copy](#install)).
+Then, add elements with the `rippleJS` class within a parent element that has layout (aka, `position: relative` or `position: absolute`).
 
 ```html
 <button class="yourButton">
@@ -13,13 +15,19 @@ Include the [rippleJS script](https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/rip
 </button>
 
 <script src="https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/ripple.min.js"></script>
+<!-- or if using ES6 modules -->
+<script type="module">
+  import 'https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/ripple.min.js';
+</script>
 ```
 
-rippleJS adds handlers on `document.body`, so you don't need to register any new elements as you add them to the DOM. It supports touch and mouse events (even at the same time), and includes its own CSS.
+rippleJS adds handlers on `document.body`, so you don't need to register any new elements as you add them to the DOM.
+It supports touch and mouse events (even at the same time), and includes its own CSS.
 
 ### Ripple Fill
 
-By adding the `fill` class to a `rippleJS` element, the ripple will fill to rounded corners, good for form elements with fixed size. For example:
+By adding the `fill` class to a `rippleJS` element, the ripple will fill to rounded corners, good for form elements with fixed size.
+For example:
 
 ```html
 <div class="optHolder">
@@ -62,8 +70,7 @@ Requires `classList`, so probably [only supports IE10+](http://caniuse.com/#feat
 
 ## Install 
 
-Instead of using rippleJS directly, you can fetch it using Bower or NPM:
+Instead of using rippleJS directly, you can fetch it using your favourite package manager:
 
     $ bower install vanilla-ripplejs
     $ npm install vanilla-ripplejs
-
