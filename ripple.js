@@ -24,12 +24,35 @@ window.addEventListener('load', function() {
     applyStyle(css);
   }
 
+  function getHolderWithRippleJsClass(event) {
+    var holder = event.target,
+        hasRippleJsClass = holder.classList.contains('rippleJS'),
+        childNodesLength = holder.childNodes.length;
+
+    if(holder.nodeName != 'BUTTON' || !childNodesLength) {
+        return hasRippleJsClass ? holder : null;
+    }
+
+    //fix firefox event target issue https://bugzilla.mozilla.org/show_bug.cgi?id=1089326
+    var i;
+    for (i = 0; i < childNodesLength; i++) {
+      var child = holder.childNodes[i],
+          classList = child.classList;
+      if(classList && classList.contains('rippleJS')) {
+        //return valid holder
+        return child;
+      }
+    }
+
+    return null;
+  }
+
   function startRipple(type, at) {
-    var holder = at.target;
-    var cl = holder.classList;
-    if (!cl.contains('rippleJS')) {
+    var holder = getHolderWithRippleJsClass(at);
+    if(!holder) {
       return false;  // ignore
     }
+    var cl = holder.classList;
 
     // Store the event use to generate this ripple on the holder: don't allow
     // further events of different types until we're done. Prevents double-
