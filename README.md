@@ -14,10 +14,12 @@ Then, add elements with the `rippleJS` class within a parent element that has la
   <div class="rippleJS"></div>
 </button>
 
-<script src="https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/ripple.min.js"></script>
+<script async src="https://cdn.jsdelivr.net/npm/vanilla-ripplejs@1.0.4"
+    integrity="sha384-0eob1EPmjm0bSf+jsoeneyGhzB2OpEjKGY6X4IlaRURy/rSmtsbERi3RJJZGFKqT"
+    crossorigin="anonymous"></script>
 <!-- or if using ES6 modules -->
 <script type="module">
-  import 'https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/ripple.min.js';
+  import 'https://cdn.jsdelivr.net/npm/vanilla-ripplejs@1.0.4';
 </script>
 ```
 
