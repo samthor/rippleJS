@@ -74,3 +74,6 @@ Instead of using rippleJS directly, you can fetch it using your favourite packag
 
     $ bower install vanilla-ripplejs
     $ npm install vanilla-ripplejs
+
+You can either use `ripple.min.js` for a precompiled version to just drop into your site, or you could use `lib.js` included as a ES module.
+If you use `lib.js`, you'll need to include the CSS too—check out `ripple.js` for how this is done for the minified version, or you could just add the CSS to your regular styles.

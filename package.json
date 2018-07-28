@@ -3,6 +3,8 @@
   "version": "1.0.3",
   "description": "vanilla Material Design ripples",
   "main": "ripple.min.js",
+  "jsnext:main": "ripple.js",
+  "module": "ripple.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/samthor/rippleJS.git"
