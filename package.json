@@ -1,6 +1,6 @@
 {
   "name": "vanilla-ripplejs",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "vanilla Material Design ripples",
   "main": "ripple.min.js",
   "jsnext:main": "ripple.js",
