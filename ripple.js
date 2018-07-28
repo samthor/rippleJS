@@ -15,7 +15,7 @@ window.addEventListener('load', function() {
     test.className = 'rippleJS';
     document.body.appendChild(test);
     var s = window.getComputedStyle(test);
-    var result = s.position == 'absolute';
+    var result = (s.position === 'absolute');
     document.body.removeChild(test);
     return result;
   }
@@ -24,23 +24,22 @@ window.addEventListener('load', function() {
     applyStyle(css);
   }
 
-  function getHolderWithRippleJsClass(event) {
-    var holder = event.target,
-        hasRippleJsClass = holder.classList.contains('rippleJS'),
-        childNodesLength = holder.childNodes.length;
+  var rippleTypeAttr = 'data-event';
 
-    if(holder.nodeName != 'BUTTON' || !childNodesLength) {
-        return hasRippleJsClass ? holder : null;
+  function getHolderWithRippleJsClass(event) {
+    var holder = event.target;
+    var childNodesLength = holder.childNodes.length;
+
+    if (holder.localName !== 'button' || !childNodesLength) {
+      return holder.classList.contains('rippleJS') ? holder : null;
     }
 
-    //fix firefox event target issue https://bugzilla.mozilla.org/show_bug.cgi?id=1089326
-    var i;
-    for (i = 0; i < childNodesLength; i++) {
-      var child = holder.childNodes[i],
-          classList = child.classList;
-      if(classList && classList.contains('rippleJS')) {
-        //return valid holder
-        return child;
+    // fix firefox event target issue https://bugzilla.mozilla.org/show_bug.cgi?id=1089326
+    for (var i = 0; i < childNodesLength; ++i) {
+      var child = holder.childNodes[i];
+      var cl = child.classList;
+      if (cl && cl.contains('rippleJS')) {
+        return child;  // return valid holder
       }
     }
 
@@ -49,7 +48,7 @@ window.addEventListener('load', function() {
 
   function startRipple(type, at) {
     var holder = getHolderWithRippleJsClass(at);
-    if(!holder) {
+    if (!holder) {
       return false;  // ignore
     }
     var cl = holder.classList;
@@ -57,11 +56,11 @@ window.addEventListener('load', function() {
     // Store the event use to generate this ripple on the holder: don't allow
     // further events of different types until we're done. Prevents double-
     // ripples from mousedown/touchstart.
-    var prev = holder.getAttribute('data-event');
-    if (prev && prev != type) {
+    var prev = holder.getAttribute(rippleTypeAttr);
+    if (prev && prev !== type) {
       return false;
     }
-    holder.setAttribute('data-event', type);
+    holder.setAttribute(rippleTypeAttr, type);
 
     // Create and position the ripple.
     var rect = holder.getBoundingClientRect();
@@ -75,7 +74,7 @@ window.addEventListener('load', function() {
     }
     var ripple = document.createElement('div');
     var max;
-    if (rect.width == rect.height) {
+    if (rect.width === rect.height) {
       max = rect.width * 1.412;
     } else {
       max = Math.sqrt(rect.width * rect.width + rect.height * rect.height);
@@ -93,7 +92,7 @@ window.addEventListener('load', function() {
       ripple.classList.add('held');
     }, 0);
 
-    var releaseEvent = (type == 'mousedown' ? 'mouseup' : 'touchend');
+    var releaseEvent = (type === 'mousedown' ? 'mouseup' : 'touchend');
     var release = function(ev) {
       // TODO: We don't check for _our_ touch here. Releasing one finger
       // releases all ripples.
@@ -105,7 +104,7 @@ window.addEventListener('load', function() {
         holder.removeChild(ripple);
         if (!holder.children.length) {
           cl.remove('active');
-          holder.removeAttribute('data-event');
+          holder.removeAttribute(rippleTypeAttr);
         }
       }, 650);
     };
@@ -113,7 +112,7 @@ window.addEventListener('load', function() {
   }
 
   document.addEventListener('mousedown', function(ev) {
-    if (ev.button == 0) {
+    if (ev.button === 0) {
       // trigger on left click only
       startRipple(ev.type, ev);
     }
