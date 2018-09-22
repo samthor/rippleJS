@@ -106,10 +106,10 @@ export default function init(target) {
       // trigger on left click only
       startRipple(ev.type, ev);
     }
-  });
+  }, {passive: true});
   target.addEventListener('touchstart', function(ev) {
     for (var i = 0; i < ev.changedTouches.length; ++i) {
       startRipple(ev.type, ev.changedTouches[i]);
     }
-  });
+  }, {passive: true});
 }
