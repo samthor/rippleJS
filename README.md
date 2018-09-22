@@ -14,12 +14,12 @@ Then, add elements with the `rippleJS` class within a parent element that has la
   <div class="rippleJS"></div>
 </button>
 
-<script async src="https://cdn.jsdelivr.net/npm/vanilla-ripplejs@1.0.5"
-    integrity="sha384-/l75gACJTFGtM+EY6RUUWefD0niJJZXiBws3EkArc2ZcijInRBFhn7vRKr89/jPn"
+<script async src="https://cdn.jsdelivr.net/npm/vanilla-ripplejs@1.0.6"
+    integrity="sha384-OlarGErerEgz/M7123pQTTek4pUIiR6t0BK09bTmWDi2cZYbv3VHrriaXDnA0Oup"
     crossorigin="anonymous"></script>
 <!-- or if using ES6 modules -->
 <script type="module">
-  import 'https://cdn.jsdelivr.net/npm/vanilla-ripplejs@1.0.5';
+  import 'https://cdn.jsdelivr.net/npm/vanilla-ripplejs@1.0.6';
 </script>
 ```
 
